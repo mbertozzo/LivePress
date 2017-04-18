@@ -13,3 +13,5 @@ Since this project is still in development, many features and options have yet t
 * header tagline and event details customization in Appearance > Customize (currently available with custom widget)
 * missing WP templates (404.php, search.php, ...)
 * footer image section featuring instagram feed
+* header background image customization in Appearance > Customize
+* custom post type to easily manage event schedule
