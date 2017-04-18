@@ -1,0 +1,498 @@
+/****************************
+Theme Name: Fuori di Testa
+Theme URI: http://mysite.com/fuoriditesta
+Author: Matteo Bertozzo
+Author URI: http://matteobertozzo.altervista.org
+Description: Questo tema è sviluppato come contenitore di notizie live per eventi.
+Version: 0.1
+License: GNU GPL v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: blue, columns, live news, bootstrap, jquery, responsive
+****************************/
+
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web:300,400,700');
+
+/* 0. Stili generali */
+body {
+  background-color: #fff;
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #1a1a1a;
+}
+
+.navbar-default {
+  color: #fff;
+  letter-spacing: 4px;
+  /*margin-bottom: 30px;*/
+}
+
+@media (min-width: 481px) {
+  .logo_min480 {
+    height: 50px;
+    display: inline-block;
+  }
+
+  .logo_max480 {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo_max480 {
+    height: 50px;
+    display: inline-block;
+  }
+
+  .logo_min480 {
+    display: none;
+  }
+}
+
+/*@media (max-width: 991px) {  /* ED -- it was 767px
+  .logo_min480 {
+    padding-left: 20px;
+  }
+}*/
+
+/*1. Navbar*/
+.navbar {
+  /*background-color: #1a1a1a;*/ /*Activate here to get dark header*/
+  background-color: rgba(0, 0, 0, 0.3);
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.navbar-collapse {
+  /*background-color: #1a1a1a;*/
+}
+
+
+/*2. Homepage*/
+.hero {
+  background: #000 url('img/bcg_c.jpg') no-repeat center center;
+  background-size: cover;
+  padding: 0;  /* removes BS padding in order to have full width navbar */
+  margin-bottom: 100px; /* margin to post container */
+}
+
+.hero-title {
+  /*padding: 0 15px;*/
+  margin: 150px 15px 50px;
+}
+
+.hero-title h2 {
+  color: #fff;
+  font-weight: 700;
+  font-size: 36px;
+  margin: 0;
+}
+
+.hero-title h3 {
+  margin: 0;
+  color: #fff;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.hero-title h3 span {
+  font-weight: 700;
+  display: block;
+  margin-bottom: 20px;
+}
+
+/*--> Category wrapper*/
+.cat-wrapper {
+  display: block;
+  overflow: hidden; /* allows the div to stick to the bottom of container */
+  padding: 5px 15px;
+  color: #fff;
+}
+
+.cat-wrapper h4 {
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.cat-wrapper ul {
+  /*display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;*/
+  padding: 0;
+}
+
+.cat-wrapper li {
+  /*flex-grow: 1;*/
+  float: left;
+  width: calc(100% * (1/2) - 10px - 2px);
+  list-style: none;
+  margin: 5px;
+  text-align: center;
+  border: 1px solid #fff;
+}
+
+@media (min-width: 481px) {
+  .cat-wrapper li {
+    width: calc(100% * (1/4) - 10px - 2px);
+  }
+}
+
+@media (min-width: 1200px) {
+  .cat-wrapper li {
+    width: calc(100% * (1/8) - 10px - 2px);
+  }
+}
+
+.cat-wrapper li a {
+  display: block;
+  padding: 5px 0;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.5s ease;
+}
+
+.cat-wrapper li a:hover,
+.cat-wrapper li a:focus {
+  background-color: #fff;
+  color: #000;
+}
+
+/*--> Posts style*/
+.posts a,
+.posts a:active,
+.posts a:hover,
+.posts a:focus,
+.posts a:visited{
+  text-decoration: none;
+  color: #000;
+}
+
+.posts a:hover {
+  border-bottom: 1px solid #000;
+}
+
+.posts img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.posts h3,
+.comments h3 {
+  font-size: 26px;
+  margin-top: 0;
+  border-bottom: 1px solid #3c3c3b;
+  color: #3c3c3b;
+  padding-bottom: 5px;
+  margin-bottom: 30px;
+}
+
+.posts h4 {
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: 300;
+  height: 200px;
+}
+
+.posts h4 span {
+  position: absolute;
+  bottom: 55px;
+  left: 15px; /*bootstrap gutter*/
+  font-size: 12px;
+}
+
+.posts label {
+  font-size: 10px;
+  line-height: 10px;
+  font-weight: normal;
+  vertical-align: middle;
+  margin-right: 10px;
+  color: #fff;
+  background: #3c3c3b;
+  padding: 5px 8px;
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+}
+
+.warning {       /* class to manage space when there's no post */
+  margin-bottom: 100px;
+}
+
+/*--> Posts Nav Links*/
+.posts-nav a,
+.posts-nav a:active,
+.posts-nav a:visited {
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid #000;
+  text-decoration: none;
+  color: #000;
+  margin-bottom: 55px;
+  transition: all 0.5s ease;
+}
+
+.posts-nav a:hover,
+.posts-nav a:focus {
+  background-color: #3c3c3b;
+  border-color: #3c3c3b;
+  color: #fff;
+
+}
+
+.posts-nav .btn-right {
+  float: right;
+}
+
+/*--> Instagram Showcase*/
+.row.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+.row.no-gutters > [class^="col-"],
+.row.no-gutters > [class*=" col-"] {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.instagram {
+  padding: 0;
+}
+
+.instagram img{
+  width: 100%;
+  display: block;
+  z-index: -9999;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  opacity: 0;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.overlay img {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 50%;
+  margin-top: -25px;
+  margin-left: -25px;
+  z-index: 9999;
+}
+
+.box:hover .overlay {
+  opacity:1;
+}
+
+/* 3. Footer */
+footer {
+  background-color: #1a1a1a;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+footer img{
+  max-width: 300px;
+  margin-bottom: 40px;
+}
+
+footer h3 {
+  margin-bottom: 25px;
+}
+
+footer p {
+  margin-bottom: 0;
+}
+
+footer i {
+  margin: 0 5px 0 10px;
+}
+
+footer i:first-child {
+  margin-left: 0;
+}
+
+footer a,
+footer a:active,
+footer a:visited,
+footer a:hover,
+footer a:focus {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer a:hover,
+footer a:focus {
+  border-bottom: 1px solid #fff;
+}
+
+/*4. Post Page -- single.php */
+.spaced {
+  padding-top: 40px;
+}
+
+p.posts-nav {
+  margin-top: 30px;
+}
+
+p.posts-nav a {
+  margin-right: 5px;
+  margin-bottom: 5px; /* overwrites margin declaration in .posts-nav a -- line 223 */
+}
+
+.mt15 {
+  margin-top: 15px; /* used to style the p with details in single.php -- 15px to account for the .post img 15px margin bottom -- line 175 */
+}
+
+@media (max-width: 767px) {
+  .single-hide {
+    display: none;
+  }
+
+  .mt15 {
+    margin-top: 30px;
+  }
+}
+
+/*---> Comments*/
+.comments {
+  padding-bottom: 55px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/*h3 style has the same definition as in .posts -- line */
+.comments p {
+  font-size: 16px;
+}
+
+.comments .comment-reply-title {
+  margin-top: 50px;
+  font-size: 20px;
+}
+
+.comments ul,
+.comments li {
+  list-style: none;
+  padding: 0;
+}
+
+.comment-respond input[type="email"],
+.comment-respond input[type="text"],
+.comment-respond input[type="url"],
+.comment-respond textarea {
+	width: 50%;
+  border: 1px solid #1a1a1a;
+  padding: 3px;
+}
+
+@media (max-width: 992px) {
+  .comment-respond input[type="email"],
+  .comment-respond input[type="text"],
+  .comment-respond input[type="url"],
+  .comment-respond textarea {
+  	width: 100%;
+  }
+}
+
+.comment-respond label {
+	display: block;
+	margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.comment-reply-link:hover,
+.comment-reply-link:active,
+.comment-reply-link:focus,
+.comment-edit-link:hover,
+.comment-edit-link:active,
+.comment-edit-link:focus {
+  text-decoration: none;
+}
+
+.comment-respond input[type="submit"],
+.comment-reply-link,
+.comment-edit-link,
+#cancel-comment-reply-link,
+.comments .commentNavigation a,
+.comments .commentNavigation span {
+  padding: 5px 10px;
+  border: 1px solid #000;
+  text-decoration: none;
+  color: #000;
+  background: #fff;
+  transition: all 0.5s ease;
+}
+
+.comment-respond input[type="submit"]:hover,
+.comment-reply-link:hover,
+.comment-edit-link:hover,
+#cancel-comment-reply-link:hover,
+.comments .commentNavigation a:hover,
+.comments .commentNavigation span {
+  background-color: #3c3c3b;
+  border-color: #3c3c3b;
+  color: #fff;
+}
+
+.avatar {
+  border-radius: 50px;
+  margin-right: 25px;
+  margin-bottom: 20px;
+}
+
+.comment-author cite {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.comment-footer {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  text-align: right;
+}
+
+.comment-date {
+  float: left;
+  color: #000;
+}
+
+.comment-date:hover,
+.comment-date:focus {
+  border-bottom: 1px solid #000;
+  text-decoration: none;
+  color: #000;
+}
+
+#cancel-comment-reply-link {
+  float: right;
+}
+
+li .depth-2 {
+  margin-left: 50px;
+}
+
+.comments .commentNavigation {
+  padding-top: 25px;
+  text-align: center;
+}
+
+.screen-reader-text,
+.comments .prev,
+.comments .next {
+  display: none;
+}
